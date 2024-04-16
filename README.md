@@ -31,7 +31,8 @@ En utilisant dans mon URL : ``` http://localhost:8000/?search=<script>alert('Hel
 Cela me renvoi alors une alerte avec écris Hello.
 Pourquoi ? Le code dit que Si (```if```) il y a une "recherche" en GET qui est initialisée et qui n'est pas NULLE alors je stocke cette "recherche" dans une variable et je l'affiche 
 Sinon (```else```) j'affiche autre chose. 
-Le problème, c'est que dans ce code il n'y a aucune échappement de caractères spéciaux et les balises sont alors prise en compte
+Le problème, c'est que dans ce code il n'y a aucune échappement de caractères spéciaux et les balises sont alors prise en compte.
+
 Pour palier a cela j'utilise la fonction ``` htmlspecialchars() ``` qui permet d'échapper les caractère spéciaux. Elle prend en paramètre une variable ( nous c'est la variables stockée ```$searchTerm``` ),
 un 'flag' et l'encodage.
 
