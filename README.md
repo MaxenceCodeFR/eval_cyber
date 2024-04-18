@@ -6,8 +6,8 @@ En utilisant ' OR '1' = '1 on peut se connecter.
 
 Alors en tapant dans les inputs de connexion utlisateur = user et mot de passe = ' OR '1' = '1 , cela nous connnecte.
 
-Pourquoi ? Ma requête est de conenxion est : "SELECT * FROM connec WHERE nom_utilisateur = '$nom_utilisateur' AND mot_de_passe = '$mot_de_passe'"
-Si dans requête je rajoute une condition OU je peux alors outre-passé la première condition qui requière une paire 'nom d'utlisateur/mot de passe"
+Pourquoi ? Ma requête de conenxion est : "SELECT * FROM connec WHERE nom_utilisateur = '$nom_utilisateur' AND mot_de_passe = '$mot_de_passe'"
+Si dans la requête je rajoute une condition OU je peux alors outre-passé la première condition qui requière une paire 'nom d'utlisateur ET mot de passe"
 ce qui donne : ```SELECT * FROM connec WHERE nom_utilisateur = '$nom_utilisateur' AND mot_de_passe = '$mot_de_passe' OR '1' = '1' ```
 
 On peut traduire la requête par "Séléctionne tout dans ma table 'connec' OÙ le nom d'utilisateur ET le mot de passe correspondent aux inputs OU 1 = 1"
@@ -15,7 +15,7 @@ L'avantage de cette injection c'est que 1 sera toujours égal à 1 que ce soit u
 
 Pour palier à cela après avoir changer mes identifiants de connexion à la base de données j'utilise une requête préparée :
 
-C'est à dire que avant d'envoyer ma requête je vais utiliser une fonction PHP qui s'apelle ```bind_param``` . Cette fonction permet de lié des variables sur une 
+C'est à dire que avant d'envoyer ma requête je vais utiliser une fonction PHP qui s'apelle ```bind_param()``` . Cette fonction permet de lié des variables sur une 
 requête SQL. Cette fonction prend en paramètre le typage, c'est a dire le type de données de mes variable (string, integer, float, etc..) et mes variables.
 Cette fonction permet alors d'isoler les données utilisateur de la commande SQL et donc d'éviter une injection SQL.
 Voici le résultat : 
